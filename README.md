@@ -30,4 +30,15 @@ However an issue arises if the user wants (as an example) their warning msg pref
 
 But as you can guess this would mean when an error comes up it says "WARNING!!" but when this script uses it's own method it'll show just "Issue:" and it might seem out of place.
 
-Perhaps the best idea is just to encourage developers not to provider their own prefix.
+Perhaps the best idea is just to encourage developers not to provide their own prefix.
+
+## How to install!
+
+Currently there's no package on any package manager as I haven't bothered to make one, but I will sometime in the future probably. For now you'll have to copy the `msg` file from the repository and put it in a directory that's in your `$PATH`
+
+A way of doing this that'll work for most people is by entering this command:
+```
+curl https://raw.githubusercontent.com/0neGuyDev/msg/main/msg -o ~/.local/bin/msg | chmod +x ~/.local/bin/msg
+```
+
+However make sure `~/.local/bin/msg` is actually in your `$PATH` not to mention that it exists.
