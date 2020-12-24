@@ -3,18 +3,6 @@
 PREFIXCOLOR=""
 PREFIX="$3"
 
-TEST2="owo"
-TEST="TEST2"
-
-var() {
-	if [[ -z $1 ]]
-	then
-		echo "$1 is unset"
-	fi
-}
-
-var '$TESTt'
-
 STATUS_PF=""
 OTHER_PF=">"
 ACTION_PF="::"
