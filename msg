@@ -18,6 +18,22 @@ PROGRESS_PF_DIVIDER="/"
 PROGRESS_PF_RBRACKET=")"
 
 case $1 in
+	"--help")		
+		msg "USAGE"
+		msg "	msg <message> <msg-type> [extra-args]"
+		msg "OPTIONS"
+		msg "	--help"
+		msg "		Shows this help message"
+		msg ""
+		msg "	--test"
+		msg "		Outputs examples of all msg types"
+		msg "INFO"
+		msg "	Running without a msg-type will still work and just act as 'echo -e'"
+		msg "	Meaning you can use escape sequences"
+		msg "	This behaviour will not change and is made on purpose."
+
+		exit 0
+		;;
 	"--test")
 		msg "Status message!" status
 		msg "Other message!" other
