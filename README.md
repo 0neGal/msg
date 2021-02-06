@@ -9,9 +9,12 @@ Here's an example of how the error messages can look:
 > Other message!
 :: Action message!
 Error: Error message!
+==> Action Warn message!
+==> Action Info message!
 Success: Success message!
 Warning: Warning message!
  -> Notice message!
+(1/5) Progress message!
 ```
 
 All of them having customizable colors and prefixes, meaning if you don't want the error message to say have "Error:" as it's prefix you can change it (At least you'll be able to soon...)
