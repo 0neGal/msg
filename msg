@@ -1,22 +1,5 @@
 #!/bin/sh
 
-PREFIXCOLOR=""
-PREFIX="$3"
-
-STATUS_PF=""
-OTHER_PF=">"
-ACTION_PF="::"
-NOTICE_PF=" ->"
-ERROR_PF="Error:"
-ACTIONINFO_PF="==>"
-ACTIONWARN_PF="==>"
-WARNING_PF="Warning:"
-SUCCESS_PF="Success:"
-
-PROGRESS_PF_LBRACKET="("
-PROGRESS_PF_DIVIDER="/"
-PROGRESS_PF_RBRACKET=")"
-
 case $1 in
 	"--help")		
 		msg "USAGE"
@@ -49,67 +32,66 @@ case $1 in
 		;;
 esac
 
-if [[ $2 == "" ]]
-then
+[ "$2" == "" ] && {
 	echo -e "$1"
 	exit 0
-fi
+}
+
+PREFIXCOLOR=""
+PREFIX="$3"
+
+STATUS_PF=""
+OTHER_PF=">"
+ACTION_PF="::"
+NOTICE_PF=" ->"
+ERROR_PF="Error:"
+ACTIONINFO_PF="==>"
+ACTIONWARN_PF="==>"
+WARNING_PF="Warning:"
+SUCCESS_PF="Success:"
+
+PROGRESS_PF_LBRACKET="("
+PROGRESS_PF_DIVIDER="/"
+PROGRESS_PF_RBRACKET=")"
+
+PRE() {
+	[ "$PREFIX" == "" ] && PREFIX="$1" || return 1
+}
 
 case $2 in
 	error)
 		PREFIXCOLOR="\e[31m"
-		if [[ $PREFIX == "" ]]
-		then
-			PREFIX="$ERROR_PF"
-		fi
+		PRE "$ERROR_PF"
 		;;
 	warning)
 		PREFIXCOLOR="\e[33m"
-		if [[ $PREFIX == "" ]]
-		then
-			PREFIX="$WARNING_PF"
-		fi
+		PRE "$WARNING_PF"
 		;;
 	notice)
 		PREFIXCOLOR="\e[33m"
-		if [[ $PREFIX == "" ]]
-		then
-			PREFIX="$NOTICE_PF"
-		fi
+		PRE "$NOTICE_PF"
 		;;
 	success)
 		PREFIXCOLOR="\e[32m"
-		if [[ $PREFIX == "" ]]
-		then
-			PREFIX="$SUCCESS_PF"
-		fi
+		PRE "$SUCCESS_PF"
 		;;
 	action)
 		PREFIXCOLOR="\e[34m"
-		if [[ $PREFIX == "" ]]
-		then
-			PREFIX="$ACTION_PF"
-		fi
+		PRE "$ACTION_PF"
 		;;
 	other)
-		PREFIX="$OTHER_PF"
+		PRE "$OTHER_PF"
 		;;
 	status)
-		PREFIX="$STATUS_PF"
+		PRE "$STATUS_PF"
 		;;
 	actioninfo)
 		PREFIXCOLOR="\e[32m"
-		if [[ $PREFIX == "" ]]
-		then
-			PREFIX="$ACTIONINFO_PF"
-		fi
+		PRE "$ACTIONINFO_PF"
 		;;
 	actionwarn)
 		PREFIXCOLOR="\e[33m"
-		if [[ $PREFIX == "" ]]
-		then
-			PREFIX="$ACTIONWARN_PF"
-		fi
+		PRE "$ACTIONWARN_PF"
 		;;
 	progress)
 		echo -e "$PROGRESS_PF_LBRACKET$3$PROGRESS_PF_DIVIDER$4$PROGRESS_PF_RBRACKET \e[0m$1"
