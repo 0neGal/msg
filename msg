@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 case $1 in
 	"--help")		
@@ -11,9 +11,9 @@ case $1 in
 		msg "	--test"
 		msg "		Outputs examples of all msg types"
 		msg "INFO"
-		msg "	Running without a msg-type will still work and just act as 'echo -e'"
-		msg "	Meaning you can use escape sequences"
-		msg "	This behaviour will not change and is made on purpose."
+		msg "	Running without a msg-type will still work."
+		msg "	Since msg uses printf to show messages you can use colors"
+		msg "   with escape sequences, this behaviour is on purpose."
 
 		exit 0
 		;;
@@ -32,8 +32,8 @@ case $1 in
 		;;
 esac
 
-[ "$2" == "" ] && {
-	echo -e "$1"
+[ "$2" = "" ] && {
+	printf "$1\n"
 	exit 0
 }
 
@@ -55,7 +55,7 @@ PROGRESS_PF_DIVIDER="/"
 PROGRESS_PF_RBRACKET=")"
 
 PRE() {
-	[ "$PREFIX" == "" ] && PREFIX="$1" || return 1
+	[ "$PREFIX" = "" ] && PREFIX="$1" || return 1
 }
 
 case $2 in
@@ -94,7 +94,7 @@ case $2 in
 		PRE "$ACTIONWARN_PF"
 		;;
 	progress)
-		echo -e "$PROGRESS_PF_LBRACKET$3$PROGRESS_PF_DIVIDER$4$PROGRESS_PF_RBRACKET \e[0m$1"
+		printf "$PROGRESS_PF_LBRACKET$3$PROGRESS_PF_DIVIDER$4$PROGRESS_PF_RBRACKET \e[0m$1\n"
 		exit 0
 		;;
 	*)
@@ -102,6 +102,6 @@ case $2 in
 		;;
 esac
 
-echo -e "$PREFIXCOLOR$PREFIX \e[0m$1"
+printf "$PREFIXCOLOR$PREFIX \e[0m$1\n"
 
 exit 0
