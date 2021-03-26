@@ -13,7 +13,7 @@ case $1 in
 		msg "INFO"
 		msg "	Running without a msg-type will still work."
 		msg "	Since msg uses printf to show messages you can use colors"
-		msg "   with escape sequences, this behaviour is on purpose."
+		msg "	with escape sequences, this behaviour is on purpose."
 
 		exit 0
 		;;
