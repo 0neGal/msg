@@ -47,3 +47,9 @@ curl https://raw.githubusercontent.com/0neGuyDev/msg/main/msg -o ~/.local/bin/ms
 ```
 
 However make sure `~/.local/bin/msg` is actually in your `$PATH` not to mention that it exists.
+
+## Other info!
+
+I'm currently thinking of porting this to Rust or C to make it a little bit (a lot) faster, as it's not very complicated, also this script needs a lot of refactoring, as it was originally only intended as a small script in my dotfiles.
+
+If I were to port it this repo would be renamed to `msg-sh` and the port would then just become `msg` that is so all links, link to the better version. I'd then also archive this repo, as it'd be quite dumb to use it over a C/Dlang/Rust/Go or whatever rewrite.
