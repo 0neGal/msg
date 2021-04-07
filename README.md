@@ -19,17 +19,21 @@ Warning: Warning message!
 (1/5) Progress message!
 ```
 
-All of them having customizable colors and prefixes, meaning if you don't want the error message to say have "Error:" as it's prefix you can change it (At least you'll be able to soon...) currently it's handled as the third argument, however certain messages can't be configured (progress message), in the future it will be done with environment variables.
+All of them having customizable colors and prefixes, meaning if you don't want the error message to have "Error:" as it's prefix you can change it (At least you'll be able to soon...) currently it's handled as the third argument (this'll likely change to env variables), however certain messages can't be configured (progress message)
 
-The main objective of this was instead of creating functions inside my scripts for making good looking output I made this script to unify it. And also so I don't have to make it in every single script and program I have.
+The main objective of this was instead of creating functions inside all of my scripts for making good looking output I made this script to make sure they all have the same "design"/colors to them, without having it to be in every one of them, not to mention this can also be used interactively. 
+
+<!-- I haven't switched it to POSIX sh yet, will do soon.
+Furthermore if you have Dash or a minimal `/bin/sh` symlink 
+-->
 
 Outside of that you can also color the actual message with escape sequences. Meaning if you want part of the message red you can add `\e[31m` somewhere and to stop the red add `\e[0m` so `msg "An error occured in \e[31mscript\e[0m fix it" error` would produce and error message where the word "script" is in red. For more info on this read up on terminal codes, [here's](https://wiki.bash-hackers.org/scripting/terminalcodes) a good place to get a good grip on how it works.
 
 ## Options
 
-As of right now the decision is to not have any command line arguments outside of `--test` which prints the example message shown above. Which also means all the customization won't be done with command line arguments. Instead it'll be done with environment variables.
+As of right now the decision is to not have any command line arguments outside of `--test` which prints the example message shown above. Which also means all the customization won't be done with command line arguments. Instead it'll be done with environment variables (As mentioned before).
 
-That way scripts unless they're evil won't be able to overwrite it as well. Overall the purpose is you can change it as the user and all scripts using `msg` gets changed as well.
+That way scripts unless they're evil won't be able to overwrite it as well. Overall the purpose is for you to be able to change it as the user and all scripts using `msg` gets changed as well.
 
 However an issue arises if the user wants (as an example) their warning msg prefix to be "WARNING!!" instead of "Warning:" and a script needs to provide a different message that isn't an warning message but still needs to be in yellow. Lets say the script provides "Issue:" as the third argument, that'll change the "Warning:" to "Issue:"
 
