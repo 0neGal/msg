@@ -47,7 +47,7 @@ Currently there's no package on any package manager as I haven't bothered to mak
 
 A way of doing this that'll work for most people is by entering this command:
 ```
-curl https://raw.githubusercontent.com/0neGuyDev/msg/main/msg -o ~/.local/bin/msg | chmod +x ~/.local/bin/msg
+curl https://raw.githubusercontent.com/0neGal/msg/main/msg -o ~/.local/bin/msg | chmod +x ~/.local/bin/msg
 ```
 
 However make sure `~/.local/bin/msg` is actually in your `$PATH` not to mention that it exists.
